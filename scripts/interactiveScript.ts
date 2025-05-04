@@ -16,7 +16,7 @@ async function main() {
   const hre = await import("hardhat");
 
   const lendingContractFactory = await ethers.getContractFactory("ConfidentialLending");
-  const lendingContractAddress = "0x788deCD6d32fC095e794c7b84a0B424E4682eE02";
+  const lendingContractAddress = "0xE8Ee37A893f2403d3e83D8Eb22Fb4a707D1AAA5e";
   const lendingContract = await lendingContractFactory.attach(lendingContractAddress);
 
   const DepositFactory = await ethers.getContractFactory("Deposit");
@@ -25,9 +25,6 @@ async function main() {
 
   const AavePoolFactory = await ethers.getContractFactory("MyAavePool");
   const aavePoolAddress = "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951";
-  const aavePool = await AavePoolFactory.attach(aavePoolAddress);
-
-
 
   const LendingTokenFactory = await ethers.getContractFactory("ConfidentialLendingToken");
   const lendingTokenAddress = await lendingContract.confidentialLendingToken();
@@ -35,14 +32,8 @@ async function main() {
 
   const ERC20Factory = await ethers.getContractFactory("MockToken");
 
-  const aaveLendingTokenAddress = "0x6b8558764d3b7572136f17174cb9ab1ddc7e1259";
   const aaveTokenContract = "0x88541670E55cC00bEEFD87eB59EDd1b7C511AC9a"
-
-
-//   💰 Aave Pool: 0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951
-// 💰 Lending Token: 0x7ccc1c14ebbf94241934eBD9db36C856F0b2996B
-// 💰 Deposit: 0x0109BcED7B4f0b0e3360CD5E3020272Ea9b0c75D
-// 💰 Lending Contract: 0x788deCD6d32fC095e794c7b84a0B424E4682eE02
+  const aaveLendingTokenAddress = "0x6b8558764d3b7572136f17174cb9ab1ddc7e1259";
 
   const fhevm = await createInstance(hre.default);
 
@@ -54,10 +45,13 @@ async function main() {
   const wallet = new ethers.Wallet(privateKey);
   console.log("Connected with address:", wallet.address);
 
+  console.log("Useful addresses:");
   console.log("💰 Aave Pool:", aavePoolAddress);
   console.log("💰 Lending Token:", lendingTokenAddress);
   console.log("💰 Deposit:", depositAddress);
   console.log("💰 Lending Contract:", lendingContractAddress);
+  console.log("💰 Aave Token:", aaveTokenContract);
+  console.log("💰 Aave Lending Token:", aaveLendingTokenAddress);
 
   while (true) {
     console.log("\n📋 Available operations:");
@@ -82,6 +76,7 @@ async function main() {
 
     switch (choice) {
       case "1": // Check token balance of
+        console.log("💰 Checking token balance of");
         try {
           // get token address
           const tokenAddress = await new Promise<string>((resolve) => {
@@ -117,6 +112,7 @@ async function main() {
         break;
 
       case "2": // deposit tokens
+        console.log("💰 Depositing tokens");
         try {
           // get deposit token address
           const depositTokenAddress = await new Promise<string>((resolve) => {
@@ -139,6 +135,7 @@ async function main() {
         break;
 
       case "3": // supply tokens to lending
+        console.log("💰 Supplying tokens to lend");
         try {
           // get token address
           const tokenSupplyAddress = await new Promise<string>((resolve) => {
@@ -161,6 +158,7 @@ async function main() {
         break;
 
       case "4": // request supply
+        console.log("💰 Requesting supply");
         try {
           // get token address
           const tokenAddress = await new Promise<string>((resolve) => {
@@ -184,6 +182,7 @@ async function main() {
         break;
 
       case "5": // process request
+        console.log("💰 Processing request");
         try {
           // get request id
           const requestId = await new Promise<string>((resolve) => {
@@ -200,6 +199,7 @@ async function main() {
         break;
 
       case "6": // check endorsement
+        console.log("💰 Checking endorsement");
         try {
 
           // get user address handle
@@ -218,6 +218,7 @@ async function main() {
         break;
 
       case "7": // check request
+        console.log("💰 Checking request");
         try {
           // get request id handle
           const requestIDHandle = await new Promise<string>((resolve) => {
@@ -233,6 +234,7 @@ async function main() {
         break;
 
       case "8": // check if request is pending
+        console.log("💰 Checking if request is pending");
         try {
           // get request id handle
           const requestIDHandle = await new Promise<string>((resolve) => {
@@ -249,6 +251,7 @@ async function main() {
 
       case "9": // check deposited amount
         try {
+          console.log("💰 Checking deposited amount");
           // get token address
           const tokenAddress = await new Promise<string>((resolve) => {
             rl.question("Enter token address: ", (answer) => {
@@ -269,6 +272,7 @@ async function main() {
         break;
 
       case "10": // check supply to lend amount
+        console.log("💰 Checking supply to lend amount");
         try {
           // get token address
           const tokenAddress = await new Promise<string>((resolve) => {
@@ -290,6 +294,7 @@ async function main() {
         break;
 
       case "11": // claim lending
+        console.log("💰 Claiming lending");
         try {
           const receiptClaim = await claimLending(lendingTokenContract);
           console.log("💰 Claimed lending successfully", receiptClaim.hash);
@@ -299,6 +304,7 @@ async function main() {
         break;
 
       case "12": // withdraw from deposit
+        console.log("💰 Withdrawing from deposit");
         try {
           // get token address
           const tokenAddress = await new Promise<string>((resolve) => {
