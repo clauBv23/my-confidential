@@ -10,7 +10,7 @@ import { IConfidentialERC20 } from "fhevm-contracts/contracts/token/ERC20/IConfi
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IAavePool } from "./IAavePool.sol";
+import { IAavePool } from "./utils/IAavePool.sol";
 import { ConfidentialLending } from "./ConfidentialLending.sol";
 import { ConfidentialLendingToken } from "./ConfidentialLendingToken.sol";
 
