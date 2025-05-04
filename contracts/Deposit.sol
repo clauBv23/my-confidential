@@ -54,7 +54,6 @@ contract Deposit is SepoliaZamaFHEVMConfig {
 
         TFHE.allowThis(newDepositAmount);
         TFHE.allow(newDepositAmount, msg.sender);
-        // TFHE.allow(newDepositAmount, lendingContract);
         deposits[depositor][_token] = newDepositAmount;
 
         // get the assets from the user
@@ -67,7 +66,6 @@ contract Deposit is SepoliaZamaFHEVMConfig {
     function supply(address _token, einput _amount, bytes calldata _inputProof) public {
         // validate the inputs
         euint64 amount = TFHE.asEuint64(_amount, _inputProof);
-        // eaddress token = TFHE.asEaddress(_token, _inputProof);
 
         // encrypt the depositor
         eaddress depositor = TFHE.asEaddress(msg.sender);
@@ -106,7 +104,10 @@ contract Deposit is SepoliaZamaFHEVMConfig {
         euint64 withdrawAmount = TFHE.select(hasEnoughDeposits, amount, TFHE.asEuint64(0));
 
         // remove the assets from the deposit
-        deposits[depositor][_token] = TFHE.sub(deposits[depositor][_token], withdrawAmount);
+        euint64 newDepositAmount = TFHE.sub(deposits[depositor][_token], withdrawAmount);
+        TFHE.allowThis(newDepositAmount);
+        TFHE.allow(newDepositAmount, msg.sender);
+        deposits[depositor][_token] = newDepositAmount;
 
         // transfer the assets to the user
         IERC20(_token).transfer(msg.sender, _amount);
