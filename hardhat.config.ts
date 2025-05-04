@@ -21,7 +21,7 @@ extendProvider(async (provider) => {
 dotenv.config();
 
 // Ensure that we have all the environment variables we need.
-const mnemonic: string = process.env.MNEMONIC!;
+// const mnemonic: string = process.env.MNEMONIC!;
 
 const chainIds = {
   zama: 8009,
@@ -49,11 +49,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
       jsonRpcUrl = "http://localhost:8545";
   }
   return {
-    accounts: {
-      count: 10,
-      mnemonic,
-      path: "m/44'/60'/0'/0",
-    },
+    accounts: process.env.PRIVATE_KEY ? process.env.PRIVATE_KEY.split(',') : [],
     chainId: chainIds[chain],
     url: jsonRpcUrl,
   };
@@ -89,13 +85,9 @@ const config: HardhatUserConfig = {
     src: "./contracts",
   },
   networks: {
-    hardhat: {
-      accounts: {
-        count: 10,
-        mnemonic,
-        path: "m/44'/60'/0'/0",
-      },
-    },
+    // hardhat: {
+    //   accounts: process.env.PRIVATE_KEY ? process.env.PRIVATE_KEY.split(',') : []
+    // },
     sepolia: getChainConfig("sepolia"),
     zama: getChainConfig("zama"),
     localDev: getChainConfig("local"),
