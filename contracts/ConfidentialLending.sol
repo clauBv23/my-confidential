@@ -27,9 +27,6 @@ contract ConfidentialLending is SepoliaZamaFHEVMConfig, SepoliaZamaGatewayConfig
     address public deposit;
     address public confidentialLendingToken;
 
-    // cast run 0x145a050115f9029d0dad8330f54c5cdd9165854ad82053d78a6cb4674cc0f789 --rpc-url https://eth-sepolia.g.alchemy.com/v2/s24MTh7v5F4ZnNaxKp8QEufqrftKVJRF
-    //  cast call 0xe2d18ac08716109a629e0cf7fd92b6624dcd8677 "deposit()" --rpc-url https://eth-sepolia.g.alchemy.com/v2/s24MTh7v5F4ZnNaxKp8QEufqrftKVJRF
-    //  cast storage 0x6B6B53923b311f5bA3e73F4A11edAFa821006Bc9 0 --rpc-url https://eth-sepolia.g.alchemy.com/v2/s24MTh7v5F4ZnNaxKp8QEufqrftKVJRF
     event SupplyRequested(euint64 requestID);
     event SupplyRequestDecryptionRequested(euint64 requestID, uint256 gatewayRequestID);
 
