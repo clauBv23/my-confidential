@@ -91,7 +91,8 @@
     "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain",
     "test": "hardhat test --network hardhat",
     "coverage": "hardhat coverage",
-    "deploy-sepolia": "hardhat deploy --network sepolia"
+    "deploy-sepolia": "hardhat deploy --network sepolia",
+    "interactive": "hardhat run scripts/interactiveScript.ts --network sepolia"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2"
