@@ -57,12 +57,6 @@ describe("MyTests", function () {
     this.aavePoolAddress = await aavePool.getAddress();
     this.myERC20 = myERC20;
     this.myERC20Address = await myERC20.getAddress();
-
-    console.log("lendingContractAddress", this.lendingContractAddress)
-    console.log("lendingERC20Address", this.lendingERC20Address)
-    console.log("depositContractAddress", this.depositContractAddress)
-    console.log("aavePoolAddress", this.aavePoolAddress)
-    console.log("myERC20Address", this.myERC20Address)
   });
 
   it("mine", async function () {
