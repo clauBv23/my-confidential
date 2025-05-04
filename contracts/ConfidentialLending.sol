@@ -86,10 +86,7 @@ contract ConfidentialLending is SepoliaZamaFHEVMConfig, SepoliaZamaGatewayConfig
     }
 
     function isRequestPending(euint64 requestID) public view returns (bool) {
-        // check caller has permission to read the request
-        if (!TFHE.isSenderAllowed(requestID)) {
-            revert NotAllowedToAccess();
-        }
+        // ! do not check the caller has permission to read the requestID to allow everyone to check if the request is pending
 
         return requests[requestID].isPending;
     }
@@ -168,10 +165,6 @@ contract ConfidentialLending is SepoliaZamaFHEVMConfig, SepoliaZamaGatewayConfig
         // todo this is wrong if has not enough deposits should supply 0 can't find a way to do this
         Deposit(deposit).supplyOnAave(asset, amount);
     }
-
-    // function getMyHandle() public view returns (eaddress) {
-    //     return TFHE.asEaddress(msg.sender);
-    // }
 
     // utils
 
