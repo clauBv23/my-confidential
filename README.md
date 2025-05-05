@@ -117,6 +117,11 @@ Future research:
 While Permit([ERC-2612](https://eips.ethereum.org/EIPS/eip-2612)) could help in this problem, I didn't focus on it since most of ERC20 doesn't support it. However, Permit2 seems a more promising path that could be explored since it works for all ERC20, didn't explore it due to the lack of previous knowledge about it and the tight deadline. [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) which will be included in the next Pectra fork is also worth exploring.
 
 
+## Issues during development
+
+The absence of a Foundry template made the setup more challenging, so I had to rely on the Hardhat template instead. Hardhat’s verbosity and limited debugging capabilities significantly slowed down the process. Additionally, the early-stage documentation for FHEVM and my limited prior experience with it made development quite time-consuming. I spent several hours just to understand how to perform basic operations, and at times, reading through the source code was more helpful than the available documentation.
+Another major challenge was the lack of a detailed explanation about how the entire process works. This forced me to go with a trial-and-error approach, which was both exhausting and time-intensive.
+
 ## Deployment:
 - Lending contract: 0xE8Ee37A893f2403d3e83D8Eb22Fb4a707D1AAA5e
 - Deposit contract: 0x1Cf234DC4aD51491dd90a2A01c2c29B1Ba411f32
