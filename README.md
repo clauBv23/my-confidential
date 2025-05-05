@@ -56,7 +56,9 @@ ConfidentialERC20:
 
 ###  Interacting with Contracts
 
-To interact with the deployed contracts:
+There is no UI for the project due to time constraints. Instead, you can interact with the deployed contracts using the provided interactive script:
+
+1. Install all needed packages:
 ```bash
 pnpm install
 ```
@@ -67,7 +69,7 @@ cp .env.example .env
 # Edit .env with your private keys and network configuration
 ```
 
-1. Run the interactive script:
+3. Run the interactive script:
 ```bash
 pnpm interactive
 ```
