@@ -113,9 +113,8 @@ Currently, a cToken is endorsed to the user based on the number of assets suppli
 
 Note that this issue is only to the current design if going with having confidential smart accounts for users, this might not be needed since that account controlled by the user EOA will actually have the aTokens, not the Deposit contract.
 
-Future improvements:
-While Permit([ERC-2612](https://eips.ethereum.org/EIPS/eip-2612)) could help in this problem, I didn't focus on it since most of ERC20 doesn't support it. However, Permit2 seems a more promising path that could be explored since it works for all ERC20, didn't explore it due to the lack of previous knowledge about it and the tight deadline. EIP-7702 which will be included in the next Pectra fork is also worth exploring.
-
+Future research:
+While Permit([ERC-2612](https://eips.ethereum.org/EIPS/eip-2612)) could help in this problem, I didn't focus on it since most of ERC20 doesn't support it. However, Permit2 seems a more promising path that could be explored since it works for all ERC20, didn't explore it due to the lack of previous knowledge about it and the tight deadline. [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) which will be included in the next Pectra fork is also worth exploring.
 
 
 ## Deployment:
